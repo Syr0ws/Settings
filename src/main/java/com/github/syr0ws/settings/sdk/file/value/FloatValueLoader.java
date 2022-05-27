@@ -2,12 +2,12 @@ package com.github.syr0ws.settings.sdk.file.value;
 
 import com.github.syr0ws.settings.api.Setting;
 import com.github.syr0ws.settings.api.exception.SettingException;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.ConfigurationSection;
 
 public class FloatValueLoader extends AbstractSettingValueLoader<Float> {
 
     @Override
-    public void load(Setting<Float> setting, FileConfiguration config, String path) {
+    public void load(Setting<Float> setting, ConfigurationSection config, String path) {
         super.load(setting, config, path);
 
         if(!config.isDouble(path))

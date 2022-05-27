@@ -6,6 +6,7 @@ import com.github.syr0ws.settings.api.exception.SettingException;
 import com.github.syr0ws.settings.api.file.SettingLoader;
 import com.github.syr0ws.settings.api.file.SettingValueLoader;
 import com.github.syr0ws.settings.api.file.SettingValueLoaderFactory;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.Set;
@@ -23,7 +24,7 @@ public class SimpleSettingLoader implements SettingLoader {
     }
 
     @Override
-    public void load(Set<SettingDescriptor<?>> descriptors, FileConfiguration config) {
+    public void load(Set<SettingDescriptor<?>> descriptors, ConfigurationSection config) {
 
         for(SettingDescriptor<?> descriptor : descriptors) {
 
@@ -36,7 +37,7 @@ public class SimpleSettingLoader implements SettingLoader {
         }
     }
 
-    private <T> void loadSetting(Setting<T> setting, FileConfiguration config, String path) throws SettingException {
+    private <T> void loadSetting(Setting<T> setting, ConfigurationSection config, String path) throws SettingException {
 
         Class<T> type = setting.getValueType();
 
