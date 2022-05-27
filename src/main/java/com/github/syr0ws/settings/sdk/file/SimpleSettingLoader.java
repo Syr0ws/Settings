@@ -30,6 +30,7 @@ public class SimpleSettingLoader implements SettingLoader {
             String path = descriptor.getPath();
             Setting<?> setting = descriptor.getSetting();
 
+            // Loading the setting.
             try { this.loadSetting(setting, config, path);
             } catch (SettingException exception) { exception.printStackTrace(); }
         }
@@ -39,6 +40,8 @@ public class SimpleSettingLoader implements SettingLoader {
 
         Class<T> type = setting.getValueType();
 
+        // Checking that the type of the value of the setting is supported
+        // and can be loaded from a configuration file.
         if(!this.factory.isSupported(type)) {
             String message = String.format("Type '%s' is not supported. To fix it, register a custom value loader into the factory.", type.getSimpleName());
             throw new SettingException(message);
