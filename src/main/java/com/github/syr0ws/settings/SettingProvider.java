@@ -11,13 +11,13 @@ public class SettingProvider implements CommonSettingModel {
     @Range(min = 1, max = 32)
     @SettingInfo(path = "min-players")
     private final Setting<Integer> minPlayers = new SimpleFilterableSetting<>(
-            "minPlayers", 16, Integer.class
+            "minPlayers", Integer.class
     );
 
     @NotEmpty
     @SettingInfo(path = "chat-format")
     private final Setting<String> chatFormat = new SimpleFilterableSetting<>(
-            "chatFormat", "%player% : %message%", String.class
+            "chatFormat", String.class
     );
 
     @Override

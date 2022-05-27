@@ -11,8 +11,8 @@ public class SimpleFilterableSetting<T> extends SimpleSetting<T> implements Filt
 
     private final SettingFilterManager<T> manager;
 
-    public SimpleFilterableSetting(String name, T value, Class<T> type) {
-        super(name, value, type);
+    public SimpleFilterableSetting(String name, Class<T> type) {
+        super(name, type);
         this.manager = new SimpleSettingFilterManager<>();
     }
 

@@ -8,7 +8,7 @@ public class SimpleSetting<T> implements Setting<T> {
     private final Class<T> type;
     private T value;
 
-    public SimpleSetting(String name, T value, Class<T> type) {
+    public SimpleSetting(String name, Class<T> type) {
 
         if(name == null)
             throw new IllegalArgumentException("Name cannot be null.");
@@ -18,8 +18,6 @@ public class SimpleSetting<T> implements Setting<T> {
 
         this.name = name;
         this.type = type;
-
-        this.value = value; // TODO To remove.
     }
 
     @Override
