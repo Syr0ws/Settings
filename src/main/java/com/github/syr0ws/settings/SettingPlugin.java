@@ -44,7 +44,7 @@ public class SettingPlugin extends JavaPlugin {
         SettingLoader loader = new SimpleSettingLoader(loaderFactory);
 
         // Loading default settings to ensure that they have a valid default value.
-        System.out.println("Default values.");
+        System.out.println("Default values:");
 
         loader.load(descriptors, config);
 
@@ -55,7 +55,7 @@ public class SettingPlugin extends JavaPlugin {
         loader.load(descriptors, super.getConfig());
 
         // Testing the user settings.
-        System.out.println("User values.");
+        System.out.println("User values:");
 
         this.displaySettings(model);
     }
