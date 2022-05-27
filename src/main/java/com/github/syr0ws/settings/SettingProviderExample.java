@@ -4,7 +4,7 @@ import com.github.syr0ws.settings.api.Setting;
 import com.github.syr0ws.settings.api.SettingInfo;
 import com.github.syr0ws.settings.api.filter.annotation.NotEmpty;
 import com.github.syr0ws.settings.api.filter.annotation.Range;
-import com.github.syr0ws.settings.sdk.SimpleFilterableSetting;
+import com.github.syr0ws.settings.common.SimpleFilterableSetting;
 
 public class SettingProviderExample implements SettingModelExample {
 

@@ -1,4 +1,4 @@
-package com.github.syr0ws.settings.sdk.file;
+package com.github.syr0ws.settings.common.file;
 
 import com.github.syr0ws.settings.api.Setting;
 import com.github.syr0ws.settings.api.SettingDescriptor;
@@ -7,7 +7,6 @@ import com.github.syr0ws.settings.api.file.SettingLoader;
 import com.github.syr0ws.settings.api.file.SettingValueLoader;
 import com.github.syr0ws.settings.api.file.SettingValueLoaderFactory;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.Set;
 

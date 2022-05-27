@@ -1,4 +1,4 @@
-package com.github.syr0ws.settings.sdk.file.value;
+package com.github.syr0ws.settings.common.file.value;
 
 import com.github.syr0ws.settings.api.Setting;
 import com.github.syr0ws.settings.api.file.SettingValueLoader;

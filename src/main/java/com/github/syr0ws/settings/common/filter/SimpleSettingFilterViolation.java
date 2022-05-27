@@ -1,4 +1,4 @@
-package com.github.syr0ws.settings.sdk.filter;
+package com.github.syr0ws.settings.common.filter;
 
 import com.github.syr0ws.settings.api.filter.SettingFilterViolation;
 

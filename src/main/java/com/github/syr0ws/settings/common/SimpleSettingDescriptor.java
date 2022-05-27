@@ -1,4 +1,4 @@
-package com.github.syr0ws.settings.sdk;
+package com.github.syr0ws.settings.common;
 
 import com.github.syr0ws.settings.api.Setting;
 import com.github.syr0ws.settings.api.SettingDescriptor;

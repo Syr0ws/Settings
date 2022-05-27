@@ -1,4 +1,4 @@
-package com.github.syr0ws.settings.sdk.filter.type;
+package com.github.syr0ws.settings.common.filter.type;
 
 import com.github.syr0ws.settings.api.filter.SettingFilter;
 

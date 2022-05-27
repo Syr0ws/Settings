@@ -1,8 +1,8 @@
-package com.github.syr0ws.settings.sdk.filter.type;
+package com.github.syr0ws.settings.common.filter.type;
 
 import com.github.syr0ws.settings.api.filter.SettingFilter;
 import com.github.syr0ws.settings.api.filter.SettingFilterViolation;
-import com.github.syr0ws.settings.sdk.filter.SimpleSettingFilterViolation;
+import com.github.syr0ws.settings.common.filter.SimpleSettingFilterViolation;
 
 import java.util.Optional;
 

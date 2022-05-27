@@ -1,20 +1,20 @@
-package com.github.syr0ws.settings.sdk.filter.type;
+package com.github.syr0ws.settings.common.filter.type;
 
 import com.github.syr0ws.settings.api.filter.SettingFilterViolation;
-import com.github.syr0ws.settings.api.filter.annotation.Max;
-import com.github.syr0ws.settings.sdk.filter.SimpleSettingFilterViolation;
+import com.github.syr0ws.settings.api.filter.annotation.Min;
+import com.github.syr0ws.settings.common.filter.SimpleSettingFilterViolation;
 
 import java.util.Optional;
 
-public class MaxFilter extends NumberFilter {
+public class MinFilter extends NumberFilter {
 
     private final int reference;
 
-    public MaxFilter(int reference) {
+    public MinFilter(int reference) {
         this.reference = reference;
     }
 
-    public MaxFilter(Max min) {
+    public MinFilter(Min min) {
         this.reference = min.value();
     }
 
@@ -23,9 +23,9 @@ public class MaxFilter extends NumberFilter {
 
         int result = super.compare(this.reference, value);
 
-        if(result >= 0) return Optional.empty();
+        if(result <= 0) return Optional.empty();
 
-        String message = String.format("Value must be lower than %d (current : %s).", this.reference, value);
+        String message = String.format("Value must be greater than %d (current : %s).", this.reference, value);
         SettingFilterViolation<Number> violation = new SimpleSettingFilterViolation<>(value, message);
 
         return Optional.of(violation);

@@ -1,9 +1,9 @@
-package com.github.syr0ws.settings.sdk.file;
+package com.github.syr0ws.settings.common.file;
 
 import com.github.syr0ws.settings.api.exception.SettingException;
 import com.github.syr0ws.settings.api.file.SettingValueLoader;
 import com.github.syr0ws.settings.api.file.SettingValueLoaderFactory;
-import com.github.syr0ws.settings.sdk.file.value.*;
+import com.github.syr0ws.settings.common.file.value.*;
 
 import java.util.HashMap;
 import java.util.Map;

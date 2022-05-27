@@ -1,13 +1,13 @@
-package com.github.syr0ws.settings.sdk.filter;
+package com.github.syr0ws.settings.common.filter;
 
 import com.github.syr0ws.settings.api.exception.SettingException;
 import com.github.syr0ws.settings.api.filter.SettingFilter;
 import com.github.syr0ws.settings.api.filter.SettingFilterFactory;
 import com.github.syr0ws.settings.api.filter.annotation.*;
-import com.github.syr0ws.settings.sdk.filter.type.MaxFilter;
-import com.github.syr0ws.settings.sdk.filter.type.MinFilter;
-import com.github.syr0ws.settings.sdk.filter.type.NotEmptyFilter;
-import com.github.syr0ws.settings.sdk.filter.type.RangeFilter;
+import com.github.syr0ws.settings.common.filter.type.MaxFilter;
+import com.github.syr0ws.settings.common.filter.type.MinFilter;
+import com.github.syr0ws.settings.common.filter.type.NotEmptyFilter;
+import com.github.syr0ws.settings.common.filter.type.RangeFilter;
 
 import java.lang.annotation.Annotation;
 import java.util.HashMap;

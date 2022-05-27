@@ -1,9 +1,9 @@
-package com.github.syr0ws.settings.sdk;
+package com.github.syr0ws.settings.common;
 
 import com.github.syr0ws.settings.api.FilterableSetting;
 import com.github.syr0ws.settings.api.filter.SettingFilterManager;
 import com.github.syr0ws.settings.api.filter.SettingFilterViolation;
-import com.github.syr0ws.settings.sdk.filter.SimpleSettingFilterManager;
+import com.github.syr0ws.settings.common.filter.SimpleSettingFilterManager;
 
 import java.util.Set;
 

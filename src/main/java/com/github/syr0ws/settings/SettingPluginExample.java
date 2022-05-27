@@ -6,10 +6,10 @@ import com.github.syr0ws.settings.api.SettingDescriptor;
 import com.github.syr0ws.settings.api.file.SettingLoader;
 import com.github.syr0ws.settings.api.file.SettingValueLoaderFactory;
 import com.github.syr0ws.settings.api.filter.SettingFilterFactory;
-import com.github.syr0ws.settings.sdk.SimpleSettingAnalyzer;
-import com.github.syr0ws.settings.sdk.file.SimpleSettingLoader;
-import com.github.syr0ws.settings.sdk.file.SimpleSettingValueLoaderFactory;
-import com.github.syr0ws.settings.sdk.filter.SimpleSettingFilterFactory;
+import com.github.syr0ws.settings.common.SimpleSettingAnalyzer;
+import com.github.syr0ws.settings.common.file.SimpleSettingLoader;
+import com.github.syr0ws.settings.common.file.SimpleSettingValueLoaderFactory;
+import com.github.syr0ws.settings.common.filter.SimpleSettingFilterFactory;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
