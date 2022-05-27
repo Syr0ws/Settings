@@ -17,7 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Set;
 
-public class SettingPlugin extends JavaPlugin {
+public class SettingPluginExample extends JavaPlugin {
 
     @Override
     public void onEnable() {
