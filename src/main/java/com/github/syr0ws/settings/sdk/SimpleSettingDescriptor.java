@@ -9,6 +9,13 @@ public class SimpleSettingDescriptor<T> implements SettingDescriptor<T> {
     private final Setting<T> setting;
 
     public SimpleSettingDescriptor(String path, Setting<T> setting) {
+
+        if(path == null)
+            throw new IllegalArgumentException("Path cannot be null.");
+
+        if(setting == null)
+            throw new IllegalArgumentException("Setting cannot be null.");
+
         this.path = path;
         this.setting = setting;
     }
