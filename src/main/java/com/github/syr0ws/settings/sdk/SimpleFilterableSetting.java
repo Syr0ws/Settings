@@ -9,12 +9,10 @@ import java.util.Set;
 
 public class SimpleFilterableSetting<T> extends SimpleSetting<T> implements FilterableSetting<T> {
 
-    private final Class<T> type;
     private final SettingFilterManager<T> manager;
 
     public SimpleFilterableSetting(String name, T value, Class<T> type) {
-        super(name, value);
-        this.type = type;
+        super(name, value, type);
         this.manager = new SimpleSettingFilterManager<>();
     }
 
@@ -42,10 +40,5 @@ public class SimpleFilterableSetting<T> extends SimpleSetting<T> implements Filt
     @Override
     public SettingFilterManager<T> getFilterManager() {
         return this.manager;
-    }
-
-    @Override
-    public Class<T> getValueType() {
-        return this.type;
     }
 }

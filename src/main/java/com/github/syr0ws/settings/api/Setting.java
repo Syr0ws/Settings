@@ -7,4 +7,6 @@ public interface Setting<T> {
     T getValue();
 
     boolean setValue(T value);
+
+    Class<T> getValueType();
 }
