@@ -13,6 +13,8 @@ import com.github.syr0ws.settings.sdk.filter.SimpleSettingFilterFactory;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Set;
 
 public class SettingPlugin extends JavaPlugin {
@@ -20,28 +22,62 @@ public class SettingPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        YamlConfiguration config = new YamlConfiguration();
-        config.set("min-players", 32);
-        config.set("chat-format", "format");
+        YamlConfiguration config = this.getDefaultConfig();
+        super.saveDefaultConfig();
 
+        // Creating the filter factory.
         SettingFilterFactory filterFactory = new SimpleSettingFilterFactory();
-        SettingProvider provider = new SettingProvider();
 
+        // Creating the model.
+        SettingModelExample model = new SettingProviderExample();
+
+        // Creating analyzer.
         SettingAnalyzer analyzer = new SimpleSettingAnalyzer(filterFactory);
-        Set<SettingDescriptor<?>> descriptors = analyzer.analyze(provider);
 
+        // Analyzing the model.
+        Set<SettingDescriptor<?>> descriptors = analyzer.analyze(model);
+
+        // Creating the value loader factory.
         SettingValueLoaderFactory loaderFactory = new SimpleSettingValueLoaderFactory();
+
+        // Creating the loader.
         SettingLoader loader = new SimpleSettingLoader(loaderFactory);
+
+        // Loading default settings to ensure that they have a valid default value.
+        System.out.println("Default values.");
 
         loader.load(descriptors, config);
 
-        Setting<Integer> setting1 = provider.getMinPlayers();
-        setting1.setValue(64);
+        // Testing the default settings.
+        this.displaySettings(model);
 
-        Setting<String> setting2 = provider.getChatFormat();
-        setting2.setValue("");
+        // Loading user settings.
+        loader.load(descriptors, super.getConfig());
 
-        System.out.println(setting1.getValue());
-        System.out.println(setting2.getValue());
+        // Testing the user settings.
+        System.out.println("User values.");
+
+        this.displaySettings(model);
+    }
+
+    private void displaySettings(SettingModelExample model) {
+
+        Setting<Integer> minPlayersSetting = model.getMinPlayers();
+        Setting<String> chatFormatSetting = model.getChatFormat();
+
+        System.out.println(minPlayersSetting.getName() + " : " + minPlayersSetting.getValue());
+        System.out.println(chatFormatSetting.getName() + " : " + chatFormatSetting.getValue());
+    }
+
+    private YamlConfiguration getDefaultConfig() {
+
+        InputStream stream = super.getResource("config.yml");
+
+        if(stream == null)
+            throw new NullPointerException("Resource 'config.yml' not found.");
+
+        InputStreamReader reader = new InputStreamReader(stream);
+
+        return YamlConfiguration.loadConfiguration(reader);
     }
 }

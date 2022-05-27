@@ -1,0 +1,3 @@
+min-players: 16
+
+chat-format: "%player% : %message%"

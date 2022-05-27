@@ -6,7 +6,7 @@ import com.github.syr0ws.settings.api.filter.annotation.NotEmpty;
 import com.github.syr0ws.settings.api.filter.annotation.Range;
 import com.github.syr0ws.settings.sdk.SimpleFilterableSetting;
 
-public class SettingProvider implements CommonSettingModel {
+public class SettingProviderExample implements SettingModelExample {
 
     @Range(min = 1, max = 32)
     @SettingInfo(path = "min-players")
