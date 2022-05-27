@@ -1,4 +1,4 @@
-package com.github.syr0ws.settings;
+package com.github.syr0ws.settings.plugin;
 
 import com.github.syr0ws.settings.api.Setting;
 import com.github.syr0ws.settings.api.model.SettingModel;

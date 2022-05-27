@@ -1,4 +1,4 @@
 name: "SettingPluginExample"
 author: "Syrows"
 version: "1.0.0"
-main: "com.github.syr0ws.settings.SettingPluginExample"
+main: "com.github.syr0ws.settings.plugin.SettingPluginExample"
