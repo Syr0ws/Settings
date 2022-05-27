@@ -10,15 +10,11 @@ public class SettingProviderExample implements SettingModelExample {
 
     @Range(min = 1, max = 32)
     @SettingInfo(path = "min-players")
-    private final Setting<Integer> minPlayers = new SimpleFilterableSetting<>(
-            "minPlayers", Integer.class
-    );
+    private final Setting<Integer> minPlayers = new SimpleFilterableSetting<>("minPlayers", Integer.class);
 
     @NotEmpty
     @SettingInfo(path = "chat-format")
-    private final Setting<String> chatFormat = new SimpleFilterableSetting<>(
-            "chatFormat", String.class
-    );
+    private final Setting<String> chatFormat = new SimpleFilterableSetting<>("chatFormat", String.class);
 
     @Override
     public Setting<Integer> getMinPlayers() {
