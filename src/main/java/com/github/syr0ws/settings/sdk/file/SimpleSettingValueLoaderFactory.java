@@ -3,9 +3,7 @@ package com.github.syr0ws.settings.sdk.file;
 import com.github.syr0ws.settings.api.exception.SettingException;
 import com.github.syr0ws.settings.api.file.SettingValueLoader;
 import com.github.syr0ws.settings.api.file.SettingValueLoaderFactory;
-import com.github.syr0ws.settings.sdk.file.value.DoubleValueLoader;
-import com.github.syr0ws.settings.sdk.file.value.IntegerValueLoader;
-import com.github.syr0ws.settings.sdk.file.value.StringValueLoader;
+import com.github.syr0ws.settings.sdk.file.value.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +14,10 @@ public class SimpleSettingValueLoaderFactory implements SettingValueLoaderFactor
 
     static {
         addLoader(String.class, new StringValueLoader());
+        addLoader(Boolean.class, new BooleanValueLoader());
         addLoader(Integer.class, new IntegerValueLoader());
+        addLoader(Long.class, new LongValueLoader());
+        addLoader(Float.class, new FloatValueLoader());
         addLoader(Double.class, new DoubleValueLoader());
     }
 
