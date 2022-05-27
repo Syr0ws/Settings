@@ -112,7 +112,7 @@ public class SimpleSettingAnalyzer implements SettingAnalyzer {
 
     private <T> SettingDescriptor<T> getDescriptor(Setting<T> setting, Field field) {
 
-        SettingInfo info = this.getSettingInfo(field);
+        ConfigurableSetting info = this.getSettingInfo(field);
 
         return new SimpleSettingDescriptor<>(info.path(), setting);
     }
@@ -135,11 +135,11 @@ public class SimpleSettingAnalyzer implements SettingAnalyzer {
         return filters;
     }
 
-    private SettingInfo getSettingInfo(Field field) {
-        return field.getAnnotation(SettingInfo.class);
+    private ConfigurableSetting getSettingInfo(Field field) {
+        return field.getAnnotation(ConfigurableSetting.class);
     }
 
     private boolean isSetting(Field field) {
-        return field.isAnnotationPresent(SettingInfo.class);
+        return field.isAnnotationPresent(ConfigurableSetting.class);
     }
 }
