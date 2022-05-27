@@ -14,6 +14,7 @@ public class DoubleValueLoader extends AbstractSettingValueLoader<Double> {
             throw new SettingException(String.format("Path '%s' is not a double or doesn't exist.", path));
 
         double value = config.getDouble(path, 0d);
+
         setting.setValue(value);
     }
 }

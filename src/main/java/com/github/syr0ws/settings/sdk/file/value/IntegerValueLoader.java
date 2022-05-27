@@ -14,6 +14,7 @@ public class IntegerValueLoader extends AbstractSettingValueLoader<Integer> {
             throw new SettingException(String.format("Path '%s' is not an int or doesn't exist.", path));
 
         int value = config.getInt(path, 0);
+
         setting.setValue(value);
     }
 }

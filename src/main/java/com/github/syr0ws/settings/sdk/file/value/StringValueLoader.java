@@ -14,6 +14,7 @@ public class StringValueLoader extends AbstractSettingValueLoader<String> {
             throw new SettingException(String.format("Path '%s' is not a String or doesn't exist.", path));
 
         String value = config.getString(path, "");
+
         setting.setValue(value);
     }
 }
