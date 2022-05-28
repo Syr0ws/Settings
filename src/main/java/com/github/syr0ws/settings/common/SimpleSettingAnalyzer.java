@@ -58,6 +58,11 @@ public class SimpleSettingAnalyzer implements SettingAnalyzer {
         return descriptors;
     }
 
+    @Override
+    public SettingFilterFactory getSettingFilterFactory() {
+        return this.factory;
+    }
+
     private Setting<?> getSetting(Field field, SettingModel model) throws SettingException {
 
         Object object;

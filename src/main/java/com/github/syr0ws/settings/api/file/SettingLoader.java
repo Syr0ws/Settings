@@ -7,4 +7,6 @@ import java.util.Set;
 
 public interface SettingLoader {
     void load(Set<SettingDescriptor<?>> descriptors, ConfigurationSection config);
+
+    SettingValueLoaderFactory getSettingValueLoaderFactory();
 }

@@ -4,8 +4,6 @@ import com.github.syr0ws.settings.api.SettingAnalyzer;
 import com.github.syr0ws.settings.api.SettingDescriptor;
 import com.github.syr0ws.settings.api.SettingManager;
 import com.github.syr0ws.settings.api.file.SettingLoader;
-import com.github.syr0ws.settings.api.file.SettingValueLoaderFactory;
-import com.github.syr0ws.settings.api.filter.SettingFilterFactory;
 import com.github.syr0ws.settings.api.model.SettingModel;
 import com.github.syr0ws.settings.common.file.SimpleSettingLoader;
 import com.github.syr0ws.settings.common.file.SimpleSettingValueLoaderFactory;
@@ -16,16 +14,10 @@ import java.util.Set;
 
 public class SimpleSettingManager implements SettingManager {
 
-    private final SettingFilterFactory filterFactory;
-    private final SettingValueLoaderFactory loaderFactory;
     private final SettingLoader loader;
     private final SettingAnalyzer analyzer;
 
-    private SimpleSettingManager(SettingFilterFactory filterFactory, SettingValueLoaderFactory loaderFactory,
-                                SettingLoader loader, SettingAnalyzer analyzer) {
-
-        this.filterFactory = filterFactory;
-        this.loaderFactory = loaderFactory;
+    private SimpleSettingManager(SettingLoader loader, SettingAnalyzer analyzer) {
         this.loader = loader;
         this.analyzer = analyzer;
     }
@@ -34,16 +26,6 @@ public class SimpleSettingManager implements SettingManager {
     public void loadSettings(SettingModel model, ConfigurationSection section) {
         Set<SettingDescriptor<?>> descriptors = this.analyzer.analyze(model);
         this.loader.load(descriptors, section);
-    }
-
-    @Override
-    public SettingFilterFactory getSettingFilterFactory() {
-        return this.filterFactory;
-    }
-
-    @Override
-    public SettingValueLoaderFactory getSettingLoaderFactory() {
-        return this.loaderFactory;
     }
 
     @Override
@@ -58,20 +40,8 @@ public class SimpleSettingManager implements SettingManager {
 
     public static class Builder {
 
-        private SettingFilterFactory filterFactory;
-        private SettingValueLoaderFactory loaderFactory;
         private SettingLoader loader;
         private SettingAnalyzer analyzer;
-
-        public Builder withFilterFactory(SettingFilterFactory factory) {
-            this.filterFactory = factory;
-            return this;
-        }
-
-        public Builder withLoaderFactory(SettingValueLoaderFactory factory) {
-            this.loaderFactory = factory;
-            return this;
-        }
 
         public Builder withLoader(SettingLoader loader) {
             this.loader = loader;
@@ -85,19 +55,17 @@ public class SimpleSettingManager implements SettingManager {
 
         public SettingManager build() {
 
-            if(this.filterFactory == null)
-                this.filterFactory = new SimpleSettingFilterFactory();
+            if(this.loader == null) {
+                SimpleSettingValueLoaderFactory factory = new SimpleSettingValueLoaderFactory();
+                this.loader = new SimpleSettingLoader(factory);
+            }
 
-            if(this.loaderFactory == null)
-                this.loaderFactory = new SimpleSettingValueLoaderFactory();
+            if(this.analyzer == null) {
+                SimpleSettingFilterFactory factory = new SimpleSettingFilterFactory();
+                this.analyzer = new SimpleSettingAnalyzer(factory);
+            }
 
-            if(this.loader == null)
-                this.loader = new SimpleSettingLoader(this.loaderFactory);
-
-            if(this.analyzer == null)
-                this.analyzer = new SimpleSettingAnalyzer(this.filterFactory);
-
-            return new SimpleSettingManager(this.filterFactory, this.loaderFactory, this.loader, this.analyzer);
+            return new SimpleSettingManager(this.loader, this.analyzer);
         }
     }
 }

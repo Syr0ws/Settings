@@ -39,6 +39,11 @@ public class SimpleSettingLoader implements SettingLoader {
         }
     }
 
+    @Override
+    public SettingValueLoaderFactory getSettingValueLoaderFactory() {
+        return this.factory;
+    }
+
     private <T> void loadSetting(Setting<T> setting, ConfigurationSection config, String path) throws SettingException {
 
         Class<T> type = setting.getValueType();
