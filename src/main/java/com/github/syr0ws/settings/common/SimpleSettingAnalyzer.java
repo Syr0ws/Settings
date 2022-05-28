@@ -35,7 +35,7 @@ public class SimpleSettingAnalyzer implements SettingAnalyzer {
         for(Field field : fields) {
 
             // Checking if the field is a setting.
-            if(!this.isSetting(field)) continue;
+            if(!this.isSettingDeclaration(field)) continue;
 
             Setting<?> setting = null;
 
@@ -112,9 +112,9 @@ public class SimpleSettingAnalyzer implements SettingAnalyzer {
 
     private <T> SettingDescriptor<T> getDescriptor(Setting<T> setting, Field field) {
 
-        SettingDeclaration info = this.getSettingInfo(field);
+        SettingDeclaration declaration = this.getSettingDeclaration(field);
 
-        return new SimpleSettingDescriptor<>(info.path(), setting);
+        return new SimpleSettingDescriptor<>(declaration.path(), setting);
     }
 
     private Set<SettingFilter<?>> getFilters(Field field) {
@@ -135,11 +135,11 @@ public class SimpleSettingAnalyzer implements SettingAnalyzer {
         return filters;
     }
 
-    private SettingDeclaration getSettingInfo(Field field) {
+    private SettingDeclaration getSettingDeclaration(Field field) {
         return field.getAnnotation(SettingDeclaration.class);
     }
 
-    private boolean isSetting(Field field) {
+    private boolean isSettingDeclaration(Field field) {
         return field.isAnnotationPresent(SettingDeclaration.class);
     }
 }

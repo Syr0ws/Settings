@@ -4,5 +4,7 @@ public interface SettingDescriptor<T> {
 
     String getPath();
 
+    boolean isConfigurable();
+
     Setting<T> getSetting();
 }

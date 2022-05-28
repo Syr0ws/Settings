@@ -10,9 +10,6 @@ public class SimpleSettingDescriptor<T> implements SettingDescriptor<T> {
 
     public SimpleSettingDescriptor(String path, Setting<T> setting) {
 
-        if(path == null)
-            throw new IllegalArgumentException("Path cannot be null.");
-
         if(setting == null)
             throw new IllegalArgumentException("Setting cannot be null.");
 
@@ -23,6 +20,11 @@ public class SimpleSettingDescriptor<T> implements SettingDescriptor<T> {
     @Override
     public String getPath() {
         return this.path;
+    }
+
+    @Override
+    public boolean isConfigurable() {
+        return this.path != null;
     }
 
     @Override

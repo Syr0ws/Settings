@@ -27,6 +27,9 @@ public class SimpleSettingLoader implements SettingLoader {
 
         for(SettingDescriptor<?> descriptor : descriptors) {
 
+            // Skipping not configurable settings.
+            if(!descriptor.isConfigurable()) continue;
+
             String path = descriptor.getPath();
             Setting<?> setting = descriptor.getSetting();
 
