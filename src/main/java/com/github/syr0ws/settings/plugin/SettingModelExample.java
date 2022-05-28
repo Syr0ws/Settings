@@ -8,4 +8,6 @@ public interface SettingModelExample extends SettingModel {
     Setting<Integer> getMinPlayers();
 
     Setting<String> getChatFormat();
+
+    Setting<Double> getDefaultMoney();
 }

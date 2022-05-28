@@ -1,3 +1,5 @@
 min-players: 16
 
 chat-format: "%player% : %message%"
+
+default-money: 100.0

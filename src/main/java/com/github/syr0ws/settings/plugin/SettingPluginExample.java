@@ -64,9 +64,11 @@ public class SettingPluginExample extends JavaPlugin {
 
         Setting<Integer> minPlayersSetting = model.getMinPlayers();
         Setting<String> chatFormatSetting = model.getChatFormat();
+        Setting<Double> defaultMoneySetting = model.getDefaultMoney();
 
         System.out.println(minPlayersSetting.getName() + " : " + minPlayersSetting.getValue());
         System.out.println(chatFormatSetting.getName() + " : " + chatFormatSetting.getValue());
+        System.out.println(defaultMoneySetting.getName() + " : " + defaultMoneySetting.getValue());
     }
 
     private YamlConfiguration getDefaultConfig() {
