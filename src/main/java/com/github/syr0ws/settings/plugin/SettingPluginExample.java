@@ -1,62 +1,30 @@
 package com.github.syr0ws.settings.plugin;
 
 import com.github.syr0ws.settings.api.Setting;
-import com.github.syr0ws.settings.api.SettingAnalyzer;
-import com.github.syr0ws.settings.api.SettingDescriptor;
-import com.github.syr0ws.settings.api.file.SettingLoader;
-import com.github.syr0ws.settings.api.file.SettingValueLoaderFactory;
-import com.github.syr0ws.settings.api.filter.SettingFilterFactory;
-import com.github.syr0ws.settings.common.SimpleSettingAnalyzer;
-import com.github.syr0ws.settings.common.file.SimpleSettingLoader;
-import com.github.syr0ws.settings.common.file.SimpleSettingValueLoaderFactory;
-import com.github.syr0ws.settings.common.filter.SimpleSettingFilterFactory;
+import com.github.syr0ws.settings.api.SettingManager;
+import com.github.syr0ws.settings.common.SimpleSettingManager;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Set;
 
 public class SettingPluginExample extends JavaPlugin {
 
     @Override
     public void onEnable() {
 
-        YamlConfiguration config = this.getDefaultConfig();
         super.saveDefaultConfig();
 
-        // Creating the filter factory.
-        SettingFilterFactory filterFactory = new SimpleSettingFilterFactory();
-
-        // Creating the model.
         SettingModelExample model = new SettingProviderExample();
-
-        // Creating analyzer.
-        SettingAnalyzer analyzer = new SimpleSettingAnalyzer(filterFactory);
-
-        // Analyzing the model.
-        Set<SettingDescriptor<?>> descriptors = analyzer.analyze(model);
-
-        // Creating the value loader factory.
-        SettingValueLoaderFactory loaderFactory = new SimpleSettingValueLoaderFactory();
-
-        // Creating the loader.
-        SettingLoader loader = new SimpleSettingLoader(loaderFactory);
+        SettingManager manager = new SimpleSettingManager.Builder().build();
 
         // Loading default settings to ensure that they have a valid default value.
-        System.out.println("Default values:");
-
-        loader.load(descriptors, config);
-
-        // Testing the default settings.
+        manager.loadSettings(model, this.getDefaultConfig());
         this.displaySettings(model);
 
         // Loading user settings.
-        loader.load(descriptors, super.getConfig());
-
-        // Testing the user settings.
-        System.out.println("User values:");
-
+        manager.loadSettings(model, super.getConfig());
         this.displaySettings(model);
     }
 
