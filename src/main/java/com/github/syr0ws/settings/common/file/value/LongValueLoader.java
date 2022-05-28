@@ -10,7 +10,7 @@ public class LongValueLoader extends AbstractSettingValueLoader<Long> {
     public void load(Setting<Long> setting, ConfigurationSection config, String path) {
         super.load(setting, config, path);
 
-        if(!config.isInt(path))
+        if(!config.isLong(path))
             throw new SettingException(String.format("Path '%s' is not an long or doesn't exist.", path));
 
         long value = config.getLong(path, 0L);
